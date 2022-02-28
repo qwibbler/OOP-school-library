@@ -8,6 +8,10 @@ class Person
     @parent_permission = parent_permission
   end
 
+  def name
+    @name
+  end
+
   def can_use_services?
     return false unless is_of_age? || @parent_permission
 
@@ -23,9 +27,9 @@ class Person
   end
 end
 
-john = Person.new(18)
-p john.can_use_services?
-john = Person.new(14)
-p john.can_use_services?
-john = Person.new(14, 'hi', parent_permission: false)
-p john.can_use_services?
+# Person tests
+print Person.new(18).can_use_services?, ' = ', true
+puts
+print Person.new(14).can_use_services?, ' = ', true
+puts
+print Person.new(14, 'hi', parent_permission: false).can_use_services?, ' = ', false
