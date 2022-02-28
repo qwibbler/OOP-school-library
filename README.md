@@ -1,7 +1,11 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# project name here
+# OOP School Library
 
-> Project description here.
+> In this project, I built a school library app. This app allows you to:
+
+    Add new students or teachers.
+    Add new books.
+    Save records of who borrowed a given book and when.
 
 ## Built With
 
@@ -22,11 +26,11 @@
 
 ## Author
 
-👨‍💻 **Omar Muhammad**
+👤 **Humaira Zaman**
 
-- GitHub: [@Omar-Muhamad](https://github.com/Omar-Muhamad)
-- Twitter: [@Eng_OmarMuhamad](https://twitter.com/Eng_OmarMuhamad)
-- LinkedIn: [@eng-omarmuhammad](https://www.linkedin.com/in/eng-omarmuhammad/)
+- GitHub: [@qwibbler](https://github.com/qwibbler)
+- Twitter: [@hmemaz](https://twitter.com/hmemaz)
+- LinkedIn: [Humaira Zaman](https://www.linkedin.com/in/hmemaz1994/)
 
 ## Show your support
 
