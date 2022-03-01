@@ -3,61 +3,44 @@ require './student'
 require './teacher'
 require './corrector'
 
-puts 'BEGIN PERSON TEST'
-print Person.new(18).can_use_services?, ' = ', true
-puts
-print Person.new(14).can_use_services?, ' = ', true
-puts
+def test(val, ans)
+  return 'Success' if val == ans
+
+  "***Failure: Expected #{ans} but got #{val}"
+end
+
+p 'BEGIN PERSON TEST'
+p "1: #{test(Person.new(18).can_use_services?, true)}"
+p "2: #{test(Person.new(14).can_use_services?, true)}"
 john = Person.new(14, 'john', parent_permission: false)
-print john.name, ' = john'
+p "3: #{test(john.name, 'john')}"
+p "4: #{test(john.age, 14)}"
+p "5: #{test(john.can_use_services?, false)}"
+p "6: #{test(john.name = 'jane', 'jane')}"
+p "7: #{test(john.age = 19, 19)}"
+p "8: #{test(john.can_use_services?, true)}"
+p 'END PERSON TEST'
 puts
-print john.age, ' = 14'
+p 'BEGIN CORRECTOR TEST'
+p "1: #{test(Corrector.new.correct_name('12345678901234567890'), '1234567890')}"
+p "2: #{test(Corrector.new.correct_name('supercalafragalistic'), 'Supercalaf')}"
+p "3: #{test(john.validate_name, 'Jane')}"
+p "4: #{test(Person.new(14, 'supercalafragalistic').validate_name, 'Supercalaf')}"
+p 'END CORRECTOR TEST'
 puts
-print john.can_use_services?, ' = ', false
+p 'BEGIN TEACHER TEST'
+p "1: #{test(Teacher.new('Maths', 14, 'john', parent_permission: false).can_use_services?, true)}"
+p "2: #{test(Teacher.new('Maths', 14, 'john', parent_permission: false).name, 'john')}"
+p "3: #{test(Teacher.new('Maths', 14).can_use_services?, true)}"
+p 'END TEACHER TEST'
 puts
-print john.name = 'jane', ' = jane'
-puts
-print john.age = 19, ' = 19'
-puts
-print john.can_use_services?, ' = ', true
-puts
-puts 'END PERSON TEST'
-puts
-puts 'BEGIN CORRECTOR TEST'
-print Corrector.new.correct_name('12345678901234567890'), ' = 1234567890'
-puts
-print Corrector.new.correct_name('supercalafragalistic'), ' = Supercalaf'
-puts
-print john.validate_name, ' = Jane'
-puts
-print Person.new(14, 'supercalafragalistic').validate_name, ' = Supercalaf'
-puts
-puts 'END PERSON TEST'
-puts
-puts 'BEGIN TEACHER TEST'
-print Teacher.new('Maths', 14, 'john', parent_permission: false).can_use_services?, ' = ', true
-puts
-print Teacher.new('Maths', 14, 'john', parent_permission: false).name, ' = john'
-puts
-print Teacher.new('Maths', 14).can_use_services?, ' = ', true
-puts
-puts 'END TEACHER TEST'
-puts
-puts 'BEGIN STUDENT TEST'
-print Student.new('class1A', 18, 'john', parent_permission: false).can_use_services?, ' = ', true
-puts
-print Student.new('class1A', 14, 'john', parent_permission: false).can_use_services?, ' = ', false
-puts
-print Student.new('class1A', 14).can_use_services?, ' = ', true
-puts
-print Student.new('class1A', 14, 'john').name, ' = john'
-puts
-print Student.new('class1A', 14, 'john').name = 'jane', ' = jane'
-puts
-print Student.new('class1A', 14).play_hooky
-puts
-print Student.new('class1A', 14, 'john').age, ' = 14'
-puts
-print Student.new('class1A', 14, 'john').age = 19, ' = 19'
-puts
-puts 'END STUDENT TEST'
+p 'BEGIN STUDENT TEST'
+p "1: #{test(Student.new('class1A', 18, 'john', parent_permission: false).can_use_services?, true)}"
+p "2: #{test(Student.new('class1A', 14, 'john', parent_permission: false).can_use_services?, false)}"
+p "3: #{test(Student.new('class1A', 14).can_use_services?, true)}"
+p "4: #{test(Student.new('class1A', 14, 'john').name, 'john')}"
+p "5: #{test(Student.new('class1A', 14, 'john').name = 'jane', 'jane')}"
+p "6: #{test(Student.new('class1A', 14).play_hooky, '¯(ツ)/¯')}"
+p "7: #{test(Student.new('class1A', 14, 'john').age, 14)}"
+p "8: #{test(Student.new('class1A', 14, 'john').age = 19, 19)}"
+p 'END STUDENT TEST'
