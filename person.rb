@@ -1,3 +1,4 @@
+require './corrector'
 class Person
   attr_accessor :name, :age
   attr_reader :id
@@ -7,12 +8,17 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @corrector = Corrector.new
   end
 
   def can_use_services?
     return false unless is_of_age? || @parent_permission
 
     true
+  end
+
+  def validate_name
+    @name = @corrector.correct_name(@name)
   end
 
   private
@@ -45,3 +51,9 @@ print john.can_use_services?, ' = ', true
 puts
 puts 'END PERSON TEST'
 puts
+puts 'BEGIN CORRECTOR TEST'
+print john.validate_name, ' = Jane'
+puts
+print Person.new(14, 'supercalafragalistic').validate_name, ' = Supercalaf'
+puts
+puts 'END PERSON TEST'
