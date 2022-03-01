@@ -29,32 +29,3 @@ class Person
     false
   end
 end
-
-# Person tests
-puts 'BEGIN PERSON TEST'
-print Person.new(18).can_use_services?, ' = ', true
-puts
-print Person.new(14).can_use_services?, ' = ', true
-puts
-john = Person.new(14, 'john', parent_permission: false)
-print john.name, ' = john'
-puts
-print john.age, ' = 14'
-puts
-print john.can_use_services?, ' = ', false
-puts
-print john.name = 'jane', ' = jane'
-puts
-print john.age = 19, ' = 19'
-puts
-print john.can_use_services?, ' = ', true
-puts
-puts 'END PERSON TEST'
-puts
-puts 'BEGIN CORRECTOR TEST'
-print john.validate_name, ' = Jane'
-puts
-print Person.new(14, 'supercalafragalistic').validate_name, ' = Supercalaf'
-puts
-puts 'END PERSON TEST'
-puts
