@@ -1,6 +1,6 @@
 require './corrector'
 class Person
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rents
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
@@ -9,6 +9,7 @@ class Person
     @age = age
     @parent_permission = parent_permission
     @corrector = Corrector.new
+    @rents = []
   end
 
   def can_use_services?
