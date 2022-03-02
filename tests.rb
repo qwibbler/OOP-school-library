@@ -51,6 +51,7 @@ p 'END STUDENT TEST'
 
 puts
 book = Book.new('title', 'author')
+book2 = Book.new('title2', 'author2')
 p 'BEGIN RENT BOOKS TEST'
 rent = Rental.new('now', book, john)
 p "1: #{test(rent.date, 'now')}"
@@ -58,10 +59,18 @@ p "2: #{test(rent.book.title, 'title')}"
 p "3: #{test(rent.person.name, 'Jane')}"
 p "4: #{test(book.rents[0].date, 'now')}"
 p "5: #{test(john.rents[0].date, 'now')}"
+john.rent_book('yesterday', book2)
+p "6: #{test(john.rents[1].date, 'yesterday')}"
+p "7: #{test(john.rents[1].book.title, 'title2')}"
+p "8: #{test(john.rents[1].person.name, 'Jane')}"
+jane = Student.new(class1a, 14, 'jane')
+book2.rented('tomorrow', jane)
+p "9: #{test(book2.rents[1].date, 'tomorrow')}"
+p "10: #{test(book2.rents[1].book.title, 'title2')}"
+p "11: #{test(book2.rents[1].person.name, 'jane')}"
 p 'END RENT BOOKS TEST'
 puts
 class2a = Classroom.new('class2A')
-jane = Student.new(class1a, 14, 'jane')
 p 'BEGIN CLASSROOM TEST'
 p "1: #{test(class2a.label, 'class2A')}"
 p "2: #{test(class2a.students, [])}"

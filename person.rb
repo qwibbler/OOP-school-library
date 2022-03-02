@@ -1,4 +1,5 @@
 require './corrector'
+require './rental'
 class Person
   attr_accessor :name, :age, :rents
   attr_reader :id
@@ -13,13 +14,17 @@ class Person
   end
 
   def can_use_services?
-    return false unless is_of_age? || @parent_permission
+    return false unless of_age? || @parent_permission
 
     true
   end
 
   def validate_name
     @name = @corrector.correct_name(@name)
+  end
+
+  def rent_book(date, book)
+    Rental.new(date, book, self)
   end
 
   private
