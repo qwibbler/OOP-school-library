@@ -37,16 +37,17 @@ john = Person.new(14, 'john', parent_permission: false)
 # p "3: #{test(Teacher.new('Maths', 14).can_use_services?, true)}"
 # p 'END TEACHER TEST'
 # puts
-# p 'BEGIN STUDENT TEST'
-# p "1: #{test(Student.new('class1A', 18, 'john', parent_permission: false).can_use_services?, true)}"
-# p "2: #{test(Student.new('class1A', 14, 'john', parent_permission: false).can_use_services?, false)}"
-# p "3: #{test(Student.new('class1A', 14).can_use_services?, true)}"
-# p "4: #{test(Student.new('class1A', 14, 'john').name, 'john')}"
-# p "5: #{test(Student.new('class1A', 14, 'john').name = 'jane', 'jane')}"
-# p "6: #{test(Student.new('class1A', 14).play_hooky, '¯(ツ)/¯')}"
-# p "7: #{test(Student.new('class1A', 14, 'john').age, 14)}"
-# p "8: #{test(Student.new('class1A', 14, 'john').age = 19, 19)}"
-# p 'END STUDENT TEST'
+class1a = Classroom.new('class1A')
+p 'BEGIN STUDENT TEST'
+p "1: #{test(Student.new(class1a, 18, 'john', parent_permission: false).can_use_services?, true)}"
+p "2: #{test(Student.new(class1a, 14, 'john', parent_permission: false).can_use_services?, false)}"
+p "3: #{test(Student.new(class1a, 14).can_use_services?, true)}"
+p "4: #{test(Student.new(class1a, 14, 'john').name, 'john')}"
+p "5: #{test(Student.new(class1a, 14, 'john').name = 'jane', 'jane')}"
+p "6: #{test(Student.new(class1a, 14).play_hooky, '¯(ツ)/¯')}"
+p "7: #{test(Student.new(class1a, 14, 'john').age, 14)}"
+p "8: #{test(Student.new(class1a, 14, 'john').age = 19, 19)}"
+p 'END STUDENT TEST'
 puts
 class2a = Classroom.new('class2A')
 p 'BEGIN CLASSROOM TEST'
@@ -54,7 +55,9 @@ p "1: #{test(class2a.label, 'class2A')}"
 class2a.add_student = Student.new('class1A', 14, 'john')
 class2a.add_student = Student.new('class1A', 14, 'jane')
 puts
-p class2a
+p jane = Student.new(class2a, 14, 'jane')
+p jane.change_classroom = class1a
+p jane
 puts
 p 'END CLASSROOM TEST'
 puts

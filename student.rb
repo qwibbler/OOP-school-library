@@ -9,7 +9,7 @@ class Student < Person
     "¯\(ツ)/¯"
   end
 
-  def change_classroom(label)
+  def change_classroom=(label)
     @classroom = label
   end
 end
