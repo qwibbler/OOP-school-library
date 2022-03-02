@@ -8,4 +8,8 @@ class Student < Person
   def play_hooky
     "¯\(ツ)/¯"
   end
+
+  def change_classroom(label)
+    @classroom = label
+  end
 end
