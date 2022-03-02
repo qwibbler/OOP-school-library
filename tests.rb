@@ -59,12 +59,12 @@ p "2: #{test(rent.book.title, 'title')}"
 p "3: #{test(rent.person.name, 'Jane')}"
 p "4: #{test(book.rents[0].date, 'now')}"
 p "5: #{test(john.rents[0].date, 'now')}"
-john.rent_book('yesterday', book2)
+john.add_rental('yesterday', book2)
 p "6: #{test(john.rents[1].date, 'yesterday')}"
 p "7: #{test(john.rents[1].book.title, 'title2')}"
 p "8: #{test(john.rents[1].person.name, 'Jane')}"
 jane = Student.new(class1a, 14, 'jane')
-book2.rented('tomorrow', jane)
+book2.add_rental('tomorrow', jane)
 p "9: #{test(book2.rents[1].date, 'tomorrow')}"
 p "10: #{test(book2.rents[1].book.title, 'title2')}"
 p "11: #{test(book2.rents[1].person.name, 'jane')}"
