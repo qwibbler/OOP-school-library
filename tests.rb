@@ -53,7 +53,7 @@ puts
 book = Book.new('title', 'author')
 book2 = Book.new('title2', 'author2')
 p 'BEGIN RENT BOOKS TEST'
-rent = Rental.new('now', book, john)
+rent = Rental.new(book, john, 'now')
 p "1: #{test(rent.date, 'now')}"
 p "2: #{test(rent.book.title, 'title')}"
 p "3: #{test(rent.person.name, 'Jane')}"
