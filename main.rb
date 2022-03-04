@@ -67,7 +67,7 @@ class App
     pp = gets.chomp
     return wrong_option unless %w[y n].include? pp.downcase
 
-    @people << Student.new(age, name, parent_permission: pp.downcase == 'y')
+    @people << Student.new('', age, name, parent_permission: pp.downcase == 'y')
     'Student created successfully'
   end
 
