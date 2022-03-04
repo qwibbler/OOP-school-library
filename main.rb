@@ -95,8 +95,8 @@ class App
     book = book.to_i
     return 'wrong_option' unless book.positive? && book <= @books.length
 
-    puts "You have chosen (#{print_book(@books[book - 1], book - 1)}."
-    @books[book - 1]
+    puts "You have chosen (#{print_book(@books[book], book)}."
+    @books[book]
   end
 
   def select_person
