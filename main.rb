@@ -8,6 +8,7 @@ require './print_output'
 require './person_methods'
 require './book_methods'
 require './selection_methods'
+require './wrong_option'
 class App
   def initialize
     @people = []
@@ -21,8 +22,8 @@ class App
     when '3' then make_person
     when '4' then make_book
     when '5' then rent_book
-    when '6' then list_rents
-    else wrong_option
+    when '6' then PrintRental.new.list_rents(@people)
+    else WrongOption.new.print_message
     end
   end
 
@@ -55,32 +56,20 @@ class App
 
   def rent_book
     book = Select.new.select('book', @books) { |val, i| PrintBook.new.print_info(val, i) }
+    return WrongOption.new.print_message('No books found') if book.nil?
+
     person = Select.new.select('person', @people) { |val, i| PrintPerson.new.print_info(val, i) }
+    return WrongOption.new.print_message('No people found') if person.nil?
+
     print 'Date: '
     date = gets.chomp
     Rental.new(book, person, date)
     'Book successfully rented'
   end
 
-  def list_rents
-    print 'Enter person ID: '
-    id = gets.chomp
-    renting_person = @people.find { |person| person.id == id.to_i }
-    return wrong_option unless renting_person
-
-    renting_person.rents.each_with_index do |rent, index|
-      puts "#{index + 1}) Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}"
-    end
-    return 'No Rental Information' if renting_person.rents.empty?
-  end
-
   def end_program
     puts 'Goodbye'
     puts
-  end
-
-  def wrong_option
-    'That was not a valid option'
   end
 end
 
