@@ -6,30 +6,36 @@ end
 
 class PrintBook < PrintOutput
   def print_info(book, index = nil)
-    puts "#{index + 1}) #{book.title} by #{book.author}"
+    "#{index + 1}) #{book.title} by #{book.author}"
   end
 
   def print_all(output)
-    print_output(output) { |val, i| print_info(val, i) }
+    return puts 'No books' if output.empty?
+
+    print_output(output) { |val, i| puts print_info(val, i) }
   end
 end
 
 class PrintPerson < PrintOutput
   def print_info(person, index = nil)
-    puts "#{index + 1}) [#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+    "#{index + 1}) [#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
   end
 
   def print_all(output)
-    print_output(output) { |val, i| print_info(val, i) }
+    return puts 'No people' if output.empty?
+
+    print_output(output) { |val, i| puts print_info(val, i) }
   end
 end
 
 class PrintRental < PrintOutput
   def print_info(rent, index = nil)
-    puts "#{index + 1}) Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}"
+    "#{index + 1}) Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}"
   end
 
   def print_all(output)
-    print_output(output) { |val, i| print_info(val, i) }
+    return puts 'No people' if @people.empty?
+
+    print_output(output) { |val, i| puts print_info(val, i) }
   end
 end

@@ -6,7 +6,8 @@ require './book'
 require './rental'
 require './print_output'
 require './person_methods'
-require 'pry'
+require './book_methods'
+require './selection_methods'
 class App
   def initialize
     @people = []
@@ -27,18 +28,14 @@ class App
 
   def all_books
     puts 'Books List: '
-    return 'No books' if @books.empty?
-
     PrintBook.new.print_all(@books)
-    return
+    nil
   end
 
   def all_people
     puts 'People List: '
-    return 'No people' if @people.empty?
-
     PrintPerson.new.print_all(@people)
-    return
+    nil
   end
 
   def make_person
@@ -48,56 +45,17 @@ class App
 
     @people.push(CreateStudent.new.create_student) if opt == '1'
     @people.push(CreateTeacher.new.create_teacher) if opt == '2'
-    return
+    nil
   end
 
   def make_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    book = Book.new(title, author)
-    @books << book
+    @books << CreateBook.new.create_book
     'Book created successfully'
   end
 
-  def select_book
-    puts 'Select a book from the following selection by number: '
-    @books.each_with_index { |book, index| puts print_book(book, index) }
-    book = gets.chomp
-    book = book.to_i
-    return 'wrong_option' unless book.positive? && book <= @books.length
-
-    puts "You have chosen (#{print_book(@books[book - 1], book - 1)}."
-    @books[book - 1]
-  end
-
-  def select_person
-    puts 'Select a person from the following selection by number (not id): '
-    @people.each_with_index { |person, index| puts print_person(person, index) }
-    person = gets.chomp
-    person = person.to_i
-    return 'wrong_option' unless person.positive? && person <= @people.length
-
-    puts "You have chosen (#{print_person(@people[person - 1], person - 1)}."
-    @people[person - 1]
-  end
-
   def rent_book
-    if @books.empty?
-      puts 'No books found. Create a new book:'
-      return make_book
-    end
-    if @people.empty?
-      puts 'No people found. Create a new person:'
-      return make_person
-    end
-    book = select_book
-    return wrong_option if book == 'wrong_option'
-
-    person = select_person
-    return wrong_option if person == 'wrong_option'
-
+    book = Select.new.select('book', @books) { |val, i| PrintBook.new.print_info(val, i) }
+    person = Select.new.select('person', @people) { |val, i| PrintPerson.new.print_info(val, i) }
     print 'Date: '
     date = gets.chomp
     Rental.new(book, person, date)
