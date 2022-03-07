@@ -5,6 +5,7 @@ require './classroom'
 require './book'
 require './rental'
 require './print_output'
+require './person_methods'
 require 'pry'
 class App
   def initialize
@@ -43,30 +44,11 @@ class App
   def make_person
     print 'Do you want to create a student (1) or a teacher (2)? '
     opt = gets.chomp
-    return wrong_option unless %w[1 2].include? opt
+    return WrongOption.new.print_message unless %w[1 2].include? opt
 
-    print 'Age: '
-    age = gets.chomp
-    print 'Name: '
-    name = gets.chomp
-    return create_student(age.to_i, name) if opt == '1'
-    return create_teacher(age.to_i, name) if opt == '2'
-  end
-
-  def create_student(age, name)
-    print 'Has Parent Permission? [Y/N]: '
-    pp = gets.chomp
-    return wrong_option unless %w[y n].include? pp.downcase
-
-    @people << Student.new('', age, name, parent_permission: pp.downcase == 'y')
-    'Student created successfully'
-  end
-
-  def create_teacher(age, name)
-    print 'Specialization: '
-    spec = gets.chomp
-    @people << Teacher.new(spec, age, name)
-    'Teacher created successfully'
+    @people.push(CreateStudent.new.create_student) if opt == '1'
+    @people.push(CreateTeacher.new.create_teacher) if opt == '2'
+    return
   end
 
   def make_book
