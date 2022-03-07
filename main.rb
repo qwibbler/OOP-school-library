@@ -4,6 +4,8 @@ require './teacher'
 require './classroom'
 require './book'
 require './rental'
+require './print_output'
+require 'pry'
 class App
   def initialize
     @people = []
@@ -12,41 +14,30 @@ class App
 
   def option_chosen(option)
     case option
-    when '1'
-      all_books
-    when '2'
-      all_people
-    when '3'
-      make_person
-    when '4'
-      make_book
-    when '5'
-      rent_book
-    when '6'
-      list_rents
-    else
-      wrong_option
+    when '1' then all_books
+    when '2' then all_people
+    when '3' then make_person
+    when '4' then make_book
+    when '5' then rent_book
+    when '6' then list_rents
+    else wrong_option
     end
-  end
-
-  def print_book(book, index = nil)
-    "#{index + 1}) #{book.title} by #{book.author}"
   end
 
   def all_books
     puts 'Books List: '
-    @books.each_with_index { |book, index| puts print_book(book, index) }
     return 'No books' if @books.empty?
-  end
 
-  def print_person(person, index = 1)
-    "#{index + 1}) [#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+    PrintBook.new.print_all(@books)
+    return
   end
 
   def all_people
     puts 'People List: '
-    @people.each_with_index { |person, index| puts print_person(person, index) }
     return 'No people' if @people.empty?
+
+    PrintPerson.new.print_all(@people)
+    return
   end
 
   def make_person
@@ -95,8 +86,8 @@ class App
     book = book.to_i
     return 'wrong_option' unless book.positive? && book <= @books.length
 
-    puts "You have chosen (#{print_book(@books[book], book)}."
-    @books[book]
+    puts "You have chosen (#{print_book(@books[book - 1], book - 1)}."
+    @books[book - 1]
   end
 
   def select_person
@@ -174,12 +165,12 @@ def options(app)
 end
 
 def main
+  app = App.new
   puts [
     '',
     'Welcome to the School Library App',
     ''
   ]
-  app = App.new
   options(app)
 end
 
