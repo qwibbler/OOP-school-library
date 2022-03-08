@@ -23,14 +23,21 @@
 3. Open terminal and navigate to the project folder.
 4. Type `irb`.
 5. Copy the code from files and run it.
+6. Alternatively, you can run the code executing the `ruby main.rb` command in your terminal.
 
-## Author
+## Authors
 
 👤 **Humaira Zaman**
 
 - GitHub: [@qwibbler](https://github.com/qwibbler)
 - Twitter: [@hmemaz](https://twitter.com/hmemaz)
 - LinkedIn: [Humaira Zaman](https://www.linkedin.com/in/hmemaz1994/)
+
+👤 **Santiago Velosa**
+
+- GitHub: [@vechicin](https://github.com/vechicin)
+- Twitter: [@therealvelosa](https://twitter.com/therealvelosa)
+- LinkedIn: [Santiago Velosa](https://www.linkedin.com/in/santiago-velosa-arias/)
 
 ## Show your support
 
