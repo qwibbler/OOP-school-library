@@ -10,8 +10,6 @@ class CreatePerson
     name = gets.chomp
 
     [age, name]
-    # return CreateStudent.new.create_student(age.to_i, name) if opt == '1'
-    # return create_teacher(age.to_i, name) if opt == '2'
   end
 end
 
