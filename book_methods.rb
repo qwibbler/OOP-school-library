@@ -1,3 +1,4 @@
+require './book'
 class CreateBook
   def create_book
     print 'Title: '

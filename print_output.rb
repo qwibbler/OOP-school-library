@@ -10,6 +10,7 @@ class PrintBook < PrintOutput
   end
 
   def print_all(output)
+    puts 'Books List: '
     return puts 'No books' if output.empty?
 
     print_output(output) { |val, i| puts print_info(val, i) }
@@ -22,6 +23,7 @@ class PrintPerson < PrintOutput
   end
 
   def print_all(output)
+    puts 'People List: '
     return puts 'No people' if output.empty?
 
     print_output(output) { |val, i| puts print_info(val, i) }
