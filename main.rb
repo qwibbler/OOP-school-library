@@ -14,8 +14,9 @@ class App
   end
 
   def load
-    LoadBooks.new.load_all(@books)
-    LoadPeople.new.load_all(@people)
+    book_ids = LoadBooks.new.load_all(@books)
+    people_ids = LoadPeople.new.load_all(@people)
+    LoadRentals.new.load_all(@people, people_ids, @books, book_ids)
     options
   end
 
@@ -55,6 +56,7 @@ class App
   def end_program
     SaveBooks.new.save_all(@books)
     SavePeople.new.save_all(@people)
+    SaveRentals.new.save_all(@people)
     puts 'Goodbye'
     puts
   end
