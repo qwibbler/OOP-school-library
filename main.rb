@@ -4,7 +4,8 @@ require './book_methods'
 require './selection_methods'
 require './wrong_option'
 require './rental_methods'
-require './data_operations'
+require './save_data'
+require './load_data'
 require 'pry'
 class App
   def initialize
@@ -14,7 +15,7 @@ class App
 
   def load
     LoadBooks.new.load_all(@books)
-    puts @books
+    LoadPeople.new.load_all(@people)
     options
   end
 
@@ -53,6 +54,7 @@ class App
 
   def end_program
     SaveBooks.new.save_all(@books)
+    SavePeople.new.save_all(@people)
     puts 'Goodbye'
     puts
   end
