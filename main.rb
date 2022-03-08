@@ -50,7 +50,7 @@ class App
   end
 
   def make_book
-    @books << CreateBook.new.create_book
+    @books << AddBook.new.add_book
     'Book created successfully'
   end
 
