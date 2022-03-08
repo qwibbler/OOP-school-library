@@ -10,8 +10,9 @@ class CreateBook
 end
 
 class AddBook < CreateBook
-  def add_book
+  def add_book(books)
     arr = create_book
-    Book.new(arr[0], arr[1])
+    books.push(Book.new(arr[0], arr[1]))
+    puts 'Book created successfully'
   end
 end
