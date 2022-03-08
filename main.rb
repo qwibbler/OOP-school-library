@@ -4,10 +4,18 @@ require './book_methods'
 require './selection_methods'
 require './wrong_option'
 require './rental_methods'
+require './data_operations'
+require 'pry'
 class App
   def initialize
     @people = []
     @books = []
+  end
+
+  def load
+    LoadBooks.new.load_all(@books)
+    puts @books
+    options
   end
 
   def options
@@ -44,6 +52,7 @@ class App
   end
 
   def end_program
+    SaveBooks.new.save_all(@books)
     puts 'Goodbye'
     puts
   end
@@ -56,7 +65,7 @@ def main
     'Welcome to the School Library App',
     ''
   ]
-  app.options
+  app.load
 end
 
 main
