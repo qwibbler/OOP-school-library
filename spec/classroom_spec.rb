@@ -9,11 +9,11 @@ RSpec.describe Classroom do
 
   describe '#new' do
     it 'should create a new classroom' do
-      expect(@classroom).to be_instance_of Classroom 
+      expect(@classroom).to be_instance_of Classroom
     end
 
     it 'should throw an error without an argument' do
-      expect{ Classroom.new }.to raise_error ArgumentError
+      expect { Classroom.new }.to raise_error ArgumentError
     end
   end
 
@@ -23,23 +23,23 @@ RSpec.describe Classroom do
     end
 
     it 'should add a student' do
-      @classroom.add_student=(@student)
+      @classroom.add_student = (@student)
       expect(@classroom.students.length).to eq(1)
     end
 
     it 'should be a student' do
-      @classroom.add_student=(@student)
+      @classroom.add_student = (@student)
       expect(@classroom.students[0]).to equal(@student)
     end
 
     it 'should have Classroom 22' do
-      @classroom.add_student=(@student)
+      @classroom.add_student = (@student)
       expect(@classroom.students[0].classroom).to be(@classroom)
     end
 
     it 'only adds student once' do
-      @classroom.add_student=(@student)
-      @classroom.add_student=(@student)
+      @classroom.add_student = (@student)
+      @classroom.add_student = (@student)
       expect(@classroom.students.length).to eq(1)
     end
   end
