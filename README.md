@@ -24,6 +24,7 @@
 4. Type `irb`.
 5. Copy the code from files and run it.
 6. Alternatively, you can run the code executing the `ruby main.rb` command in your terminal.
+7. If you want to run some unit tests, all you need to do is run the `rspec` command on your terminal after executing the `gem install rspec` command.
 
 ## Authors
 
