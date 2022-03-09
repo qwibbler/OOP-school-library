@@ -9,7 +9,7 @@ describe Student do
 
   describe '#new' do
     it 'should throw an error if invalid number of arguments' do
-      expect{ Student.new }.to raise_error ArgumentError
+      expect { Student.new }.to raise_error ArgumentError
     end
 
     it 'should create a Student' do
@@ -29,15 +29,15 @@ describe Student do
 
   describe '#change_classroom=' do
     it 'should throw an error if no arguments' do
-      expect{ @student.change_classroom }.to raise_error NoMethodError
+      expect { @student.change_classroom }.to raise_error NoMethodError
     end
 
     it 'should throw an error if incorrect classroom' do
-      expect { @student.change_classroom=(2) }.to raise_error NameError
+      expect { @student.change_classroom = (2) }.to raise_error NameError
     end
 
     it 'should change the classroom' do
-      @student.change_classroom=(@classroom)
+      @student.change_classroom = (@classroom)
       expect(@student.classroom).to be(@classroom)
     end
   end

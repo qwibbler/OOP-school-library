@@ -12,7 +12,6 @@ def test(val, ans)
   "***Failure: Expected #{ans} but got #{val}"
 end
 
-
 john = Person.new(14, 'john', parent_permission: false)
 p 'BEGIN PERSON TEST'
 p "1: #{test(Person.new(18).can_use_services?, true)}"

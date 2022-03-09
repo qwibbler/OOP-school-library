@@ -12,7 +12,7 @@ describe Person do
 
   describe '#new' do
     it 'should throw an error' do
-      expect{ Person.new }.to raise_error ArgumentError
+      expect { Person.new }.to raise_error ArgumentError
     end
 
     it 'should create a new person' do
@@ -66,11 +66,11 @@ describe Person do
 
   describe '#add_rental' do
     it 'should throw an error if incorrect number of parameters' do
-      expect{ @person.add_rental }.to raise_error ArgumentError
+      expect { @person.add_rental }.to raise_error ArgumentError
     end
 
     it 'should throw an error if book is not a Book' do
-      expect{ @person.add_rental('now', 'Whatever') }.to raise_error NameError
+      expect { @person.add_rental('now', 'Whatever') }.to raise_error NameError
     end
 
     it 'should return an empty array at first' do

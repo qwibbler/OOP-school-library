@@ -8,7 +8,7 @@ describe Teacher do
 
   describe '#new' do
     it 'should throw an error if invalid number of arguments' do
-      expect{ Teacher.new }.to raise_error ArgumentError
+      expect { Teacher.new }.to raise_error ArgumentError
     end
 
     it 'should create a teacher' do
