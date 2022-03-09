@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative './spec_helper'
 
-RSpec.describe Classroom do
+describe Classroom do
   before :each do
     @classroom = Classroom.new('Classroom 22')
     @student = Student.new('Classroom 22', 26, 'Santiago')

@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative './spec_helper'
 
-RSpec.describe Book do
+describe Book do
   before :each do
     @book = Book.new('title', 'author')
     @person = Person.new(45, 'john')
